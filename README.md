@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# What is MERN?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MERN stands for MongoDB, Express, React, Node
+Classified as a NoSQL database program, MongoDB uses JSON-like documents.
+Express.js, or simply Express, is a back end web application framework for building RESTful APIs with Node.js
+Node.js is a back-end JavaScript runtime environment. Node.js runs on a JavaScript Engine and executes JavaScript code outside a web browser.
+React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
 
-## Available Scripts
+# Structure
 
-In the project directory, you can run:
+## Server
 
-### `npm start`
+The package.json file is the heart of any Node project. It records important metadata about a project which is required before publishing to NPM, and also defines functional attributes of a project that npm uses to install dependencies, run scripts, and identify the entry point to our package.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In this file we defined how to start the app, meaning what happens when we run 'npm start' or 'npm run server'.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json.
 
-### `npm test`
+The server.js is run to start the server.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The node_modules is just a directory created by npm and a way of tracking each packages you install locally via package.json
 
-### `npm run build`
+### DB
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The db folder contains the code to connect to the MongoDB database with mongoose
+The URL of the db is stored in the .env file
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Models
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Models are responsible for creating and reading documents from the underlying MongoDB database.
+We have one file per 'class' or 'collection' or 'table', for example User
 
-### `npm run eject`
+### Routes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Each route can have one or more handler functions, which are executed when the route is matched.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+We have one file per type of objects (an endpoint), in which we define which endpoints and methods (get, post, etc.). We define which function is used for each method. The functions are defined in the Controllers folder.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Controllers
 
-## Learn More
+We have one file per route, we import the Model and perform the operations we want for the methods for each endpoint.
+For example, to sign up a new user we use the '/register' route and the post method. we check if a user already exists with the email and if not we create it (using the Model).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+###
