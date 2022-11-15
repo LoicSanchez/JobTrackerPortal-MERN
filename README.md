@@ -1,9 +1,13 @@
 # What is MERN?
 
-MERN stands for MongoDB, Express, React, Node
+MERN stands for MongoDB, Express, React, Node.
+
 Classified as a NoSQL database program, MongoDB uses JSON-like documents.
-Express.js, or simply Express, is a back end web application framework for building RESTful APIs with Node.js
+
+Express.js, or simply Express, is a back end web application framework for building RESTful APIs with Node.js.
+
 Node.js is a back-end JavaScript runtime environment. Node.js runs on a JavaScript Engine and executes JavaScript code outside a web browser.
+
 React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
 
 # Structure
@@ -22,8 +26,9 @@ The node_modules is just a directory created by npm and a way of tracking each p
 
 ### DB
 
-The db folder contains the code to connect to the MongoDB database with mongoose
-The URL of the db is stored in the .env file
+The db folder contains the code to connect to the MongoDB database with mongoose.
+
+The URL of the db is stored in the .env file.
 
 ### Models
 
@@ -43,4 +48,30 @@ We have one file per type of objects (an endpoint), in which we define which end
 We have one file per route, we import the Model and perform the operations we want for the methods for each endpoint.
 For example, to sign up a new user we use the '/register' route and the post method. we check if a user already exists with the email and if not we create it (using the Model).
 
-###
+## Front-End (client folder)
+
+The Front-End is built with React. It's its own Node project (package.json file and node_modules folder).
+
+The new documentation for React is great => https://beta.reactjs.org/learn
+
+The public folder contains the icons, the manifest.json file and index.html
+
+The src (Source) folder contains the code. At the root is the main CSS file (index.css) and JS file (index.js): they render the project. The index.js file references the App.js that contains the logic of the app.
+
+### Components
+
+Each React component is a file, they share state via the 'appContext'.
+
+Note: every time we have a folder we adopt the practice of creating an index.js file in which we import all our files and export them, so it's easier to import in the rest of the code.
+
+### Context
+
+The state of the application across components is shared via the 'appContext.js' and 'reducer.js'. The types of events or actions are captured in the 'actions.js' file.
+
+### Assets > Wrappers
+
+We use a library called styled-components to write CSS in JavaScript. We can wrap components and style wth ease, hence the 'wrappers'. A wrapper wraps the output from the pages file to style it.
+
+### Pages
+
+The pages renders the different pages (or portion of pages) via calls from the App.js Routes using 'react-router-dom'.
