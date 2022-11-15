@@ -75,3 +75,24 @@ We use a library called styled-components to write CSS in JavaScript. We can wra
 ### Pages
 
 The pages renders the different pages (or portion of pages) via calls from the App.js Routes using 'react-router-dom'.
+
+# Libraries Used
+
+## Server
+
+-  dotenv
+-  express-async-errors
+-  mongoose
+-  validator
+-  bcryptjs
+-  jsonwebtoken
+-  http-status-codes
+-  morgan: HTTP request logger middleware for node.js https://www.npmjs.com/package/morgan
+
+## Client
+
+-  react
+-  react-router-dom
+-  normalize.css
+-  styled-components
+-  axios
