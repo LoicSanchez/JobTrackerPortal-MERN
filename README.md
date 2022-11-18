@@ -22,7 +22,9 @@ package-lock.json is automatically generated for any operations where npm modifi
 
 The server.js is run to start the server.
 
-The node_modules is just a directory created by npm and a way of tracking each packages you install locally via package.json
+The node_modules is just a directory created by npm and a way of tracking each packages you install locally via package.json.
+
+We use JWT, or JSON Web Token (an open standard used to share information between two parties securely — a client and a server) and password encryption.
 
 ### DB
 
@@ -80,19 +82,31 @@ The pages renders the different pages (or portion of pages) via calls from the A
 
 ## Server
 
--  dotenv
--  express-async-errors
--  mongoose
--  validator
--  bcryptjs
--  jsonwebtoken
--  http-status-codes
+-  dotenv: Loads environment variables from .env file
+-  express-async-errors: A way to catch errors at runtime without using try/catch blocks in your async functions
+-  mongoose: Object Data Modeling (ODM) library for MongoDB distributed
+-  validator: String validation and sanitization
+-  bcryptjs: A bcrypt library - to hash and compare the passwords
+-  jsonwebtoken: An implementation of JSON Web Tokens
+-  http-status-codes: Easy access to HTTP Status Codes (200, 400, 404, etc.)
 -  morgan: HTTP request logger middleware for node.js https://www.npmjs.com/package/morgan
+-  concurrently: Run multiple commands concurrently (used to start server and client at the same time).
 
 ## Client
 
 -  react
--  react-router-dom
--  normalize.css
--  styled-components
--  axios
+-  react-router-dom: Declarative routing for React web applications (client side routing) (Outlet, BrowserRouter, Routes, Route, Link)
+-  normalize.css: Makes browsers render all elements more consistently and in line with modern standards.
+-  styled-components: Allow to write CSS to style your components, removes the mapping between components and styles.
+-  axios: Promise based HTTP client for the browser and node.js (https://axios-http.com/docs/intro).
+-  react-icons: Library of icons from multiple sources (https://react-icons.github.io/react-icons)
+
+# Design Resources
+
+-  To Generate Favicons -> https://favicon.io/
+-  Hipster Ipsum https://hipsum.co/
+-  Cool images -> https://undraw.co
+
+# Other
+
+All keys generator -> https://www.allkeysgenerator.com/
