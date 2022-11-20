@@ -56,9 +56,11 @@ For example, to sign up a new user we use the '/register' route and the post met
 
 Contains the middleware functions that are run for certain routes. For example, authenticate:
 Two ways to use it:
+```
 import authenticateUser from './middleware/auth.js';
  1. app.use('/api/v1/jobs', authenticateUser, jobsRouter); //Authenticate for all routes for this endpoint
  2. router.route('/updateUser').patch(authenticateUser,updateUser); //Only authenticate for a specific route
+ ```
 
 ## Front-End (client folder)
 
@@ -80,8 +82,10 @@ Note: every time we have a folder we adopt the practice of creating an index.js 
 
 The state of the application across components is shared via the 'appContext.js' and 'reducer.js'. The types of events or actions are captured in the 'actions.js' file.
 
-We can still use a local state when needed in a component using React Hooks: 
+We can still use a local state when needed in a component using React Hooks:
+```
 const [varName,setVarNameFunction] = useState(defaultVarValue)
+```
 
 ### Assets > Wrappers
 
@@ -122,8 +126,8 @@ The pages renders the different pages (or portion of pages) via calls from the A
 
 # Other
 
-All keys generator -> https://www.allkeysgenerator.com/
-JSON Web Token https://jwt.io/
+- All keys generator -> https://www.allkeysgenerator.com/
+- JSON Web Token https://jwt.io/
 
 # Tips
 
