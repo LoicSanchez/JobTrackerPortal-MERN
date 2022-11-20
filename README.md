@@ -26,6 +26,8 @@ The node_modules is just a directory created by npm and a way of tracking each p
 
 We use JWT, or JSON Web Token (an open standard used to share information between two parties securely — a client and a server) and password encryption.
 
+We test the Server with logs on the Terminal and POSTMAN, as there is no front-end to the server. The Font-End (client) is connected to the server to make our app complete.
+
 ### DB
 
 The db folder contains the code to connect to the MongoDB database with mongoose.
@@ -50,6 +52,14 @@ We have one file per type of objects (an endpoint), in which we define which end
 We have one file per route, we import the Model and perform the operations we want for the methods for each endpoint.
 For example, to sign up a new user we use the '/register' route and the post method. we check if a user already exists with the email and if not we create it (using the Model).
 
+### Middleware
+
+Contains the middleware functions that are run for certain routes. For example, authenticate:
+Two ways to use it:
+import authenticateUser from './middleware/auth.js';
+ 1. app.use('/api/v1/jobs', authenticateUser, jobsRouter); //Authenticate for all routes for this endpoint
+ 2. router.route('/updateUser').patch(authenticateUser,updateUser); //Only authenticate for a specific route
+
 ## Front-End (client folder)
 
 The Front-End is built with React. It's its own Node project (package.json file and node_modules folder).
@@ -69,6 +79,9 @@ Note: every time we have a folder we adopt the practice of creating an index.js 
 ### Context
 
 The state of the application across components is shared via the 'appContext.js' and 'reducer.js'. The types of events or actions are captured in the 'actions.js' file.
+
+We can still use a local state when needed in a component using React Hooks: 
+const [varName,setVarNameFunction] = useState(defaultVarValue)
 
 ### Assets > Wrappers
 
@@ -110,3 +123,17 @@ The pages renders the different pages (or portion of pages) via calls from the A
 # Other
 
 All keys generator -> https://www.allkeysgenerator.com/
+JSON Web Token https://jwt.io/
+
+# Tips
+
+### Input fields
+```
+<input
+    type={type}
+    value={value}
+    name={name}
+    onChange={handleChange}
+/>
+onChange function typically (e) => setName(e.target.value)
+```
