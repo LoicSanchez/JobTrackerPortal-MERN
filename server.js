@@ -31,9 +31,12 @@ app.get('/', (req, res) => {
 	res.send('Welcome!')
 })
 
+//We create the endpoint for the user authentication, pointing to the router file
 app.use('/api/v1/auth', authRouter)
+//We create the endpoint for the Jobs, using the middleware for authentication and pointing to the router file
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
 
+//We specify the other middleware for route not found and error handler
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 

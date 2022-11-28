@@ -49,8 +49,8 @@ We have one file per type of objects (an endpoint), in which we define which end
 
 ### Controllers
 
-We have one file per route, we import the Model and perform the operations we want for the methods for each endpoint.
-For example, to sign up a new user we use the '/register' route and the post method. we check if a user already exists with the email and if not we create it (using the Model).
+We have one file per route, we import the Model and perform the validations and Model operations for the methods for each endpoint.
+For example, to sign up a new user we use the '/register' route, we check if all the values are provided and whether a user already exists with the email. Then we create it using 'create' from the Model.
 
 ### Middleware
 
@@ -80,7 +80,27 @@ Note: every time we have a folder we adopt the practice of creating an index.js 
 
 ### Context
 
-The state of the application across components is shared via the 'appContext.js' and 'reducer.js'. The types of events or actions are captured in the 'actions.js' file.
+The state of the application across components is shared via the 'appContext.js' and 'reducer.js'. The types of events or actions are captured in the 'actions.js' file. The reducer maintains the global state while the appContext does the HTTP calls and maintains the web storage.
+
+Reducers let you consolidate a component’s state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen. More on the docs https://beta.reactjs.org/learn/scaling-up-with-reducer-and-context
+
+```
+1. Define the event is action.js
+export const UPDATE_USER_BEGIN = 'UPDATE_USER_BEGIN'
+
+2. Import in AppContext and dispatch events
+import { UPDATE_USER_BEGIN } from './actions'
+const updateUser = async (currentUser) => {
+  dispatch({ type: UPDATE_USER_BEGIN });
+  //do something
+}
+
+3. Import in reducer and update state based on events
+if (action.type === UPDATE_USER_BEGIN) {
+  return { ...state, isLoading: true }
+}
+
+```
 
 We can still use a local state when needed in a component using React Hooks:
 ```
@@ -94,6 +114,41 @@ We use a library called styled-components to write CSS in JavaScript. We can wra
 ### Pages
 
 The pages renders the different pages (or portion of pages) via calls from the App.js Routes using 'react-router-dom'.
+
+### Communicate with the Server
+
+The Front End communicates with the Back End via HTTP calls using Axios. Because this affects teh Global State of our Web Application, we use it in the AppContext.js. There would be 3 ways to implement the HTTP calls:
+
+- A manual way - For each instance we define the url, method, data and Authorization - This would be good for one-off but it would create a lot of duplicate code in our case
+
+```
+const updaterUser = async (currentUser) => {
+  try {
+    const { data } = await axios.patch('/api/v1/auth/updateUser', currentUser, {
+      headers: {Authorization: `Bearer ${state.token}` },
+    });
+    console.log(data);
+  } catch (error) { console.log(error.response); } };
+```
+
+- A Global Setup - we setup the header as the global setup - The issue here is that the token would also be sent to all other apps, so it's a security issue
+
+```
+axios.defaults.headers['Authorization'] = `Bearer ${state.token}`;
+```
+
+- A Custom Instance with Interceptor - https://axios-http.com/docs/instance - This is the best way here. The interceptors intercept requests or responses before they are handled - https://axios-http.com/docs/interceptors (similar to a middleware)
+
+```
+const authFetch = axios.create({
+  baseURL: '/api/v1',
+});
+authFetch.interceptors.request.use( (config) => {
+    config.headers['Authorization'] = `Bearer ${state.token}`;
+    return config; },
+  (error) => { return Promise.reject(error);}
+);
+```
 
 # Libraries Used
 
