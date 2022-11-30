@@ -6,6 +6,7 @@
 
 /* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Libre+Franklin:wght@400;700&display=swap');
 
 html {
   font-size: 100%;
@@ -13,16 +14,16 @@ html {
 
 :root {
   /* colors */
-  --primary-50: #e0fcff;
-  --primary-100: #bef8fd;
-  --primary-200: #87eaf2;
-  --primary-300: #54d1db;
-  --primary-400: #38bec9;
-  --primary-500: #2cb1bc;
-  --primary-600: #14919b;
-  --primary-700: #0e7c86;
-  --primary-800: #0a6c74;
-  --primary-900: #044e54;
+  --primary-50: #e7e3f6;
+  --primary-100: #d0c7ed;
+  --primary-200: #b8abe4;
+  --primary-300: #a08fdb;
+  --primary-400: #8973d2;
+  --primary-500: #7157c8;
+  --primary-600: #5b3dbd;
+  --primary-700: #4d34a1;
+  --primary-800: #402b85;
+  --primary-900: #322269;
 
   /* grey */
   --grey-50: #f0f4f8;
@@ -38,20 +39,20 @@ html {
   /* rest of the colors */
   --black: #222;
   --white: #fff;
-  --red-light: #f8d7da;
-  --red-dark: #842029;
-  --green-light: #d1e7dd;
-  --green-dark: #0f5132;
+  --red-light: #ffa8a8;
+  --red-dark: #450003;
+  --green-light: #d3e7c4;
+  --green-dark: #414d19;
 
   /* fonts  */
-  --headingFont: 'Roboto Condensed', Sans-Serif;
-  --bodyFont: 'Cabin', Sans-Serif;
+  --headingFont: 'Libre Franklin','Roboto Condensed', Sans-Serif;
+  --bodyFont: 'Dosis','Cabin', Sans-Serif;
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
   /* rest of the vars */
   --backgroundColor: var(--grey-50);
   --textColor: var(--grey-900);
-  --borderRadius: 0.25rem;
+  --borderRadius: 0.35rem;
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all;
   --max-width: 1120px;

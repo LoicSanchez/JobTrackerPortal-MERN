@@ -1,7 +1,13 @@
 import logo from '../assets/images/logo.svg'
+import Wrapper from '../assets/wrappers/Logo'
 
 const Logo = () => {
-	return <img src={logo} alt="jobify" className="logo" />
+	return (
+		<Wrapper>
+			{/* <img src={logo} alt="job tracker portal" className="logo" /> */}
+			<div class="main-icon logo">J</div>
+		</Wrapper>
+	)
 }
 
 export default Logo

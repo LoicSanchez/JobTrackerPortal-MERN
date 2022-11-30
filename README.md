@@ -179,6 +179,7 @@ authFetch.interceptors.request.use( (config) => {
 -  To Generate Favicons -> https://favicon.io/
 -  Hipster Ipsum https://hipsum.co/
 -  Cool images -> https://undraw.co
+-  Color Designer to generate tints from a primary color -> https://colordesigner.io/
 
 # Other
 
