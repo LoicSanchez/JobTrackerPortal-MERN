@@ -171,7 +171,8 @@ authFetch.interceptors.request.use( (config) => {
 -  normalize.css: Makes browsers render all elements more consistently and in line with modern standards.
 -  styled-components: Allow to write CSS to style your components, removes the mapping between components and styles.
 -  axios: Promise based HTTP client for the browser and node.js (https://axios-http.com/docs/intro).
--  react-icons: Library of icons from multiple sources (https://react-icons.github.io/react-icons)
+-  react-icons: Library of icons from multiple sources (https://react-icons.github.io/react-icons).
+- Moment.js:Parse, validate, manipulate and display dates and times in JavaScript (https://momentjs.com).
 
 # Design Resources
 
@@ -195,4 +196,13 @@ authFetch.interceptors.request.use( (config) => {
     onChange={handleChange}
 />
 onChange function typically (e) => setName(e.target.value)
+```
+```
+<button
+  type="button"
+  className="btn delete-btn"
+  onClick={() => deleteJob(_id)}
+  >
+  Delete
+</button>
 ```
