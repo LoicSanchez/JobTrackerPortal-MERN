@@ -13,15 +13,16 @@ const Landing = () => {
 			<div className="container page">
 				<div className="info">
 					<h1>
-						Job <span>Tracking</span> App
+						Track your <span>Job</span> Applications
 					</h1>
 					<p>
-						Before they sold out letterpress vexillologist adaptogen
-						mumblecore crucifix. Semiotics selfies bitters listicle. Twee
-						next level 8-bit, sus edison bulb vegan blog photo booth synth
-						fit JOMO 90's neutra cardigan fixie. Dreamcatcher locavore
-						distillery, put a bird on it kickstarter activated charcoal
-						banjo vibecession cliche 8-bit hella.
+						We help people keep track of job applications, find better
+						jobs and relieve the burden of daily job search management.
+					</p>
+					<p>
+						No more stacks of paper, no more distributed notes. Everything
+						is centralized, searchable, and you can access it anywhere you
+						go.
 					</p>
 					<Link to="/register" className="btn btn-hero">
 						Login/Register

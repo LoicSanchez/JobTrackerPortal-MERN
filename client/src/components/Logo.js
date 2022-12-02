@@ -5,7 +5,7 @@ const Logo = () => {
 	return (
 		<Wrapper>
 			{/* <img src={logo} alt="job tracker portal" className="logo" /> */}
-			<div class="main-icon logo">J</div>
+			<div className="main-icon logo">J</div>
 		</Wrapper>
 	)
 }

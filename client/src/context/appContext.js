@@ -16,9 +16,13 @@ import {
 	CREATE_JOB_BEGIN,
 	CREATE_JOB_SUCCESS,
 	CREATE_JOB_ERROR,
+	EDIT_JOB_BEGIN,
+	EDIT_JOB_SUCCESS,
+	EDIT_JOB_ERROR,
 	GET_JOBS_BEGIN,
 	GET_JOBS_SUCCESS,
 	SET_EDIT_JOB,
+	DELETE_JOB_BEGIN,
 } from './actions'
 import axios from 'axios'
 
@@ -40,7 +44,7 @@ const initialState = {
 	position: '',
 	company: '',
 	jobLocation: userLocation || '',
-	jobTypeOptions: ['full-time', 'part-time', 'remote', 'internship'],
+	jobTypeOptions: ['full-time', 'contract'],
 	jobType: 'full-time',
 	statusOptions: ['pending', 'interview', 'declined'],
 	status: 'pending',
@@ -227,7 +231,7 @@ const AppProvider = ({ children }) => {
 				},
 			})
 		} catch (error) {
-			console.log(error.response)
+			// console.log(error.response)
 			logoutUser()
 		}
 		clearAlert()
@@ -236,12 +240,44 @@ const AppProvider = ({ children }) => {
 	const setEditJob = (id) => {
 		dispatch({ type: SET_EDIT_JOB, payload: { id } })
 	}
-	const editJob = () => {
-		console.log('edit job')
+	const editJob = async () => {
+		dispatch({ type: EDIT_JOB_BEGIN })
+		try {
+			const {
+				editJobId: jobId,
+				position,
+				company,
+				jobLocation,
+				jobType,
+				status,
+			} = state
+			const { data } = await authFetch.patch(`/jobs/${jobId}`, {
+				position,
+				company,
+				jobLocation,
+				jobType,
+				status,
+			})
+			dispatch({ type: EDIT_JOB_SUCCESS })
+			dispatch({ type: CLEAR_VALUES })
+		} catch (error) {
+			if (error.response.status === 401) return
+			dispatch({
+				type: EDIT_JOB_ERROR,
+				payload: { msg: error.response.data.msg },
+			})
+		}
+		clearAlert()
 	}
 
-	const deleteJob = (id) => {
-		console.log(`delete job: ${id}`)
+	const deleteJob = async (jobId) => {
+		dispatch({ type: DELETE_JOB_BEGIN })
+		try {
+			await authFetch.delete(`/jobs/${jobId}`)
+			getJobs()
+		} catch (error) {
+			logoutUser()
+		}
 	}
 
 	return (

@@ -52,15 +52,39 @@ We have one file per type of objects (an endpoint), in which we define which end
 We have one file per route, we import the Model and perform the validations and Model operations for the methods for each endpoint.
 For example, to sign up a new user we use the '/register' route, we check if all the values are provided and whether a user already exists with the email. Then we create it using 'create' from the Model.
 
+```js
+//Server - Routes
+//Create the route with id as the parameter
+router.route('/:id').delete(deleteJob).patch(updateJob)
+
+//Server - Controller
+//id is given jobId alias is the parameter and values are in the body
+const updateJob = async (req, res) => {
+	const { id: jobId } = req.params
+	const { company, position } = req.body
+}
+
+//Client - Context
+//send patch request with jobId as parameter and {position,company} as body
+const deleteJob = async (jobId) => {
+  const { data } = await authFetch.patch(`/jobs/${jobId}`, {
+    position,
+    company
+  })
+}
+```
+
 ### Middleware
 
 Contains the middleware functions that are run for certain routes. For example, authenticate:
 Two ways to use it:
-```
+```js
 import authenticateUser from './middleware/auth.js';
- 1. app.use('/api/v1/jobs', authenticateUser, jobsRouter); //Authenticate for all routes for this endpoint
- 2. router.route('/updateUser').patch(authenticateUser,updateUser); //Only authenticate for a specific route
- ```
+//server.js
+app.use('/api/v1/jobs', authenticateUser, jobsRouter); //Authenticate for all routes for this endpoint
+//Server - Routes
+router.route('/updateUser').patch(authenticateUser,updateUser); //Only authenticate for a specific route
+```
 
 ## Front-End (client folder)
 
@@ -103,7 +127,7 @@ if (action.type === UPDATE_USER_BEGIN) {
 ```
 
 We can still use a local state when needed in a component using React Hooks:
-```
+```js
 const [varName,setVarNameFunction] = useState(defaultVarValue)
 ```
 
@@ -184,7 +208,8 @@ authFetch.interceptors.request.use( (config) => {
 # Other
 
 - All keys generator -> https://www.allkeysgenerator.com/
-- JSON Web Token https://jwt.io/
+- JSON Web Token -> https://jwt.io/
+- Need some mock data to test your app? Mockaroo lets you generate up to 1,000 rows of realistic test data in CSV, JSON, SQL, and Excel formats -> https://www.mockaroo.com
 
 # Tips
 
