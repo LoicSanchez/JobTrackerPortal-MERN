@@ -23,6 +23,8 @@ import {
 	GET_JOBS_SUCCESS,
 	SET_EDIT_JOB,
 	DELETE_JOB_BEGIN,
+	SHOW_STATS_BEGIN,
+	SHOW_STATS_SUCCESS,
 } from './actions'
 import axios from 'axios'
 
@@ -52,6 +54,8 @@ const initialState = {
 	totalJobs: 0,
 	numOfPages: 1,
 	page: 1,
+	stats: {},
+	monthlyApplications: [],
 }
 
 const AppContext = React.createContext()
@@ -251,7 +255,7 @@ const AppProvider = ({ children }) => {
 				jobType,
 				status,
 			} = state
-			const { data } = await authFetch.patch(`/jobs/${jobId}`, {
+			await authFetch.patch(`/jobs/${jobId}`, {
 				position,
 				company,
 				jobLocation,
@@ -279,6 +283,21 @@ const AppProvider = ({ children }) => {
 			logoutUser()
 		}
 	}
+	const showStats = async () => {
+		dispatch({ type: SHOW_STATS_BEGIN })
+		try {
+			const { data } = await authFetch('jobs/stats')
+			dispatch({
+				type: SHOW_STATS_SUCCESS,
+				payload: {
+					stats: data.defaultStats,
+					monthlyApplications: data.monthlyApplications,
+				},
+			})
+		} catch (error) {
+			logoutUser()
+		}
+	}
 
 	return (
 		<AppContext.Provider
@@ -296,6 +315,7 @@ const AppProvider = ({ children }) => {
 				deleteJob,
 				setEditJob,
 				editJob,
+				showStats,
 			}}
 		>
 			{children}

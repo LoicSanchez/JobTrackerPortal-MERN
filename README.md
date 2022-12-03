@@ -86,6 +86,10 @@ app.use('/api/v1/jobs', authenticateUser, jobsRouter); //Authenticate for all ro
 router.route('/updateUser').patch(authenticateUser,updateUser); //Only authenticate for a specific route
 ```
 
+### Data Aggregation
+
+Aggregation Pipeline in MongoDB https://www.mongodb.com/docs/manual/core/aggregation-pipeline/
+
 ## Front-End (client folder)
 
 The Front-End is built with React. It's its own Node project (package.json file and node_modules folder).
@@ -196,7 +200,7 @@ authFetch.interceptors.request.use( (config) => {
 -  styled-components: Allow to write CSS to style your components, removes the mapping between components and styles.
 -  axios: Promise based HTTP client for the browser and node.js (https://axios-http.com/docs/intro).
 -  react-icons: Library of icons from multiple sources (https://react-icons.github.io/react-icons).
-- Moment.js:Parse, validate, manipulate and display dates and times in JavaScript (https://momentjs.com).
+-  Moment.js:Parse, validate, manipulate and display dates and times in JavaScript (https://momentjs.com).
 
 # Design Resources
 
@@ -214,7 +218,7 @@ authFetch.interceptors.request.use( (config) => {
 # Tips
 
 ### Input fields
-```
+```html
 <input
     type={type}
     value={value}
@@ -223,7 +227,7 @@ authFetch.interceptors.request.use( (config) => {
 />
 onChange function typically (e) => setName(e.target.value)
 ```
-```
+```html
 <button
   type="button"
   className="btn delete-btn"
@@ -231,4 +235,9 @@ onChange function typically (e) => setName(e.target.value)
   >
   Delete
 </button>
+```
+
+```
+Array .reduce()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 ```
