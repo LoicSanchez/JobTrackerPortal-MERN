@@ -88,7 +88,7 @@ router.route('/updateUser').patch(authenticateUser,updateUser); //Only authentic
 
 ### Data Aggregation
 
-Aggregation Pipeline in MongoDB https://www.mongodb.com/docs/manual/core/aggregation-pipeline/
+Aggregation Pipeline in MongoDB => https://www.mongodb.com/docs/manual/core/aggregation-pipeline/
 
 ## Front-End (client folder)
 
@@ -200,7 +200,8 @@ authFetch.interceptors.request.use( (config) => {
 -  styled-components: Allow to write CSS to style your components, removes the mapping between components and styles.
 -  axios: Promise based HTTP client for the browser and node.js (https://axios-http.com/docs/intro).
 -  react-icons: Library of icons from multiple sources (https://react-icons.github.io/react-icons).
--  Moment.js:Parse, validate, manipulate and display dates and times in JavaScript (https://momentjs.com).
+-  Moment.js: Parse, validate, manipulate and display dates and times in JavaScript (https://momentjs.com).
+-  Recharts: A composable charting library built on React components (https://recharts.org/).
 
 # Design Resources
 
@@ -237,6 +238,7 @@ onChange function typically (e) => setName(e.target.value)
 </button>
 ```
 
+### JavaScript
 ```
 Array .reduce()
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
