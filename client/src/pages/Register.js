@@ -95,6 +95,23 @@ export const Register = () => {
 				>
 					submit
 				</button>
+				<button
+					type="button"
+					className="btn btn-block btn-hipster"
+					disabled={isLoading}
+					onClick={() => {
+						setupUser({
+							currentUser: {
+								email: 'demo@email.com',
+								password: 'secret',
+							},
+							endPoint: 'login',
+							alertText: 'Login with Demo User! Redirecting...',
+						})
+					}}
+				>
+					{isLoading ? 'Loading...' : 'Test the App!'}
+				</button>
 				<p>
 					{values.isMember ? 'Not a member yet?' : 'Already a member?'}
 
