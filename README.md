@@ -28,6 +28,8 @@ We use JWT, or JSON Web Token (an open standard used to share information betwee
 
 We test the Server with logs on the Terminal and POSTMAN, as there is no front-end to the server. The Font-End (client) is connected to the server to make our app complete.
 
+![Schema-Server 001](https://user-images.githubusercontent.com/44512205/206031544-2446c122-36a2-48dd-af66-5bf8deea7e18.png)
+
 ### DB
 
 The db folder contains the code to connect to the MongoDB database with mongoose.
@@ -104,6 +106,8 @@ The new documentation for React is great => https://beta.reactjs.org/learn
 The public folder contains the icons, the manifest.json file and index.html
 
 The src (Source) folder contains the code. At the root is the main CSS file (index.css) and JS file (index.js): they render the project. The index.js file references the App.js that contains the logic of the app.
+
+![Schema-FrontEnd 001](https://user-images.githubusercontent.com/44512205/206031589-689f67d8-0815-4d1a-b37d-094f3cbb7ec8.png)
 
 ### Components
 
