@@ -51,6 +51,11 @@ We have one file per type of objects (an endpoint), in which we define which end
 
 We have one file per route, we import the Model and perform the validations and Model operations for the methods for each endpoint.
 For example, to sign up a new user we use the '/register' route, we check if all the values are provided and whether a user already exists with the email. Then we create it using 'create' from the Model.
+To create, get, delete, modify the jobs, we use the '/jobs' routes and parameters, query and values from the body.
+Route: '/jobs' (e.g get all jobs from GET 'server/api/vi/jobs')
+Parameter: '/:id' (e.g update a job with PATCH 'server/api/vi/jobs/jobId')
+Query: '?status=pending' (e.g get jobs with status pending 'server/api/vi/jobs?status=pending')
+Body: '{"company":"Google","position":"Software Engineer"}' (e.g create a new job with POST 'server/api/vi/jobs')
 
 ```js
 //Server - Routes
@@ -86,7 +91,7 @@ app.use('/api/v1/jobs', authenticateUser, jobsRouter); //Authenticate for all ro
 router.route('/updateUser').patch(authenticateUser,updateUser); //Only authenticate for a specific route
 ```
 
-### Data Aggregation
+### Data Aggregation for Charts
 
 Aggregation Pipeline in MongoDB => https://www.mongodb.com/docs/manual/core/aggregation-pipeline/
 
@@ -236,6 +241,11 @@ onChange function typically (e) => setName(e.target.value)
   >
   Delete
 </button>
+```
+
+### Handle Change
+```
+handleChange
 ```
 
 ### JavaScript
