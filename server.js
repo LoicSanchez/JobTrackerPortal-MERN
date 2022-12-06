@@ -24,17 +24,36 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(morgan('dev'))
 }
 
-app.use(express.json())
+/* ONLY for PRODUCTION build */
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
-app.get('/', (req, res) => {
-	//throw new Error('error')
-	res.send('Welcome!')
-})
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+app.use(express.static(path.resolve(__dirname, './client/build')))
+/* */
+
+app.use(express.json())
+/* Security */
+import helmet from 'helmet'
+import xss from 'xss-clean'
+import mongoSanitize from 'express-mongo-sanitize'
+app.use(helmet())
+app.use(xss())
+app.use(mongoSanitize())
+/* */
 
 //We create the endpoint for the user authentication, pointing to the router file
 app.use('/api/v1/auth', authRouter)
 //We create the endpoint for the Jobs, using the middleware for authentication and pointing to the router file
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
+
+/* ONLY for PRODUCTION build */
+app.get('*', function (request, response) {
+	response.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
+})
+/* */
 
 //We specify the other middleware for route not found and error handler
 app.use(notFoundMiddleware)

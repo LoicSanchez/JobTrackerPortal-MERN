@@ -208,6 +208,17 @@ authFetch.interceptors.request.use( (config) => {
 -  Moment.js: Parse, validate, manipulate and display dates and times in JavaScript (https://momentjs.com).
 -  Recharts: A composable charting library built on React components (https://recharts.org/).
 
+## Security Libraries
+
+- [helmet](https://www.npmjs.com/package/helmet)
+  Helmet helps you secure your Express apps by setting various HTTP headers.
+- [xss-clean](https://www.npmjs.com/package/xss-clean)
+  Node.js Connect middleware to sanitize user input coming from POST body, GET queries, and url params.
+- [express-mongo-sanitize](https://www.npmjs.com/package/express-mongo-sanitize)
+  Sanitizes user-supplied data to prevent MongoDB Operator Injection.
+- [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
+  Basic rate-limiting middleware for Express.
+
 # Design Resources
 
 -  To Generate Favicons -> https://favicon.io/
