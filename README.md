@@ -1,6 +1,6 @@
 # What is MERN?
 
-MERN stands for MongoDB, Express, React, Node.
+MERN stands for MongoDB, Express, React, Node. It's Full-Stack, following the traditional three-tier architectural pattern: including the front-end display tier (React.js), application tier (Express.js and Node.js) and database tier (MongoDB).
 
 Classified as a NoSQL database program, MongoDB uses JSON-like documents.
 
@@ -232,6 +232,10 @@ authFetch.interceptors.request.use( (config) => {
 - JSON Web Token -> https://jwt.io/
 - Need some mock data to test your app? Mockaroo lets you generate up to 1,000 rows of realistic test data in CSV, JSON, SQL, and Excel formats -> https://www.mockaroo.com
 
+# Deployment 
+
+Deployment and hosting on https://render.com 
+
 # Tips
 
 ### Input fields
@@ -248,15 +252,25 @@ onChange function typically (e) => setName(e.target.value)
 <button
   type="button"
   className="btn delete-btn"
-  onClick={() => deleteJob(_id)}
+  onClick={() => doSomething}
   >
   Delete
 </button>
 ```
 
-### Handle Change
-```
-handleChange
+### Handle Change - Global
+```js
+AppContext.js
+const handleChange = ({ name, value }) => {
+  dispatch({
+    type: HANDLE_CHANGE,
+    payload: { name, value },
+  })
+}
+reducer.js
+if (action.type === HANDLE_CHANGE) {
+  return { ...state, [action.payload.name]: action.payload.value, page: 1 }
+}
 ```
 
 ### JavaScript
