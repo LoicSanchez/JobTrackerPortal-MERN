@@ -1,3 +1,10 @@
+# Try it!
+Try the LVE app here => https://jobtrackerportal.onrender.com
+
+** Click on Login/Register, then Test the App to try it without an account
+
+** It can be a bit slow because it's currently hosted on a free tier 🤷‍♂️
+
 # What is MERN?
 
 MERN stands for MongoDB, Express, React, Node. It's Full-Stack, following the traditional three-tier architectural pattern: including the front-end display tier (React.js), application tier (Express.js and Node.js) and database tier (MongoDB).
