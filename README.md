@@ -1,5 +1,5 @@
 # Try it!
-Try the LVE app here => https://jobtrackerportal.onrender.com
+Try the LIVE app here => https://jobtrackerportal.onrender.com
 
 ** Click on Login/Register, then Test the App to try it without an account
 
